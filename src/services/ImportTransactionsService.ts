@@ -16,7 +16,7 @@ class ImportTransactionsService {
   async execute(path: string): Promise<Transaction[]> {
     const contactsReadStream = fs.createReadStream(path);
 
-    const parsers = csv({ from_line: 2 });
+    const parsers = csv({ from_line: 2, delimiter: ',' });
 
     const parsedCSV = contactsReadStream.pipe(parsers);
 
